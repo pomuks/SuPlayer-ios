@@ -36,13 +36,13 @@
 		DD8BA89928501C8F00395B54 /* CourseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8BA89828501C8F00395B54 /* CourseSection.swift */; };
 		DD8BA89B28501CEB00395B54 /* SectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8BA89A28501CEB00395B54 /* SectionRow.swift */; };
 		DD8BA89D28501FFD00395B54 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8BA89C28501FFD00395B54 /* SectionView.swift */; };
-		DD94911F27A2C11F00BE60FC /* SwiftUI_for_iOS_15App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD94911E27A2C11F00BE60FC /* SwiftUI_for_iOS_15App.swift */; };
+		DD94911F27A2C11F00BE60FC /* SuPlayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD94911E27A2C11F00BE60FC /* SuPlayerApp.swift */; };
 		DD94912127A2C11F00BE60FC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD94912027A2C11F00BE60FC /* ContentView.swift */; };
 		DD94912327A2C12000BE60FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD94912227A2C12000BE60FC /* Assets.xcassets */; };
 		DD94912627A2C12000BE60FC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD94912527A2C12000BE60FC /* Preview Assets.xcassets */; };
-		DD94913027A2C12000BE60FC /* SwiftUI_for_iOS_15Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD94912F27A2C12000BE60FC /* SwiftUI_for_iOS_15Tests.swift */; };
-		DD94913A27A2C12000BE60FC /* SwiftUI_for_iOS_15UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD94913927A2C12000BE60FC /* SwiftUI_for_iOS_15UITests.swift */; };
-		DD94913C27A2C12000BE60FC /* SwiftUI_for_iOS_15UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD94913B27A2C12000BE60FC /* SwiftUI_for_iOS_15UITestsLaunchTests.swift */; };
+		DD94913027A2C12000BE60FC /* SuPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD94912F27A2C12000BE60FC /* SuPlayerTests.swift */; };
+		DD94913A27A2C12000BE60FC /* SuPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD94913927A2C12000BE60FC /* SuPlayerUITests.swift */; };
+		DD94913C27A2C12000BE60FC /* SuPlayerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD94913B27A2C12000BE60FC /* SuPlayerUITestsLaunchTests.swift */; };
 		DDB90B7D27F5BADD00BF87D7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB90B7C27F5BADD00BF87D7 /* HomeView.swift */; };
 		DDB90B8427F5BFC900BF87D7 /* FeaturedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB90B8327F5BFC900BF87D7 /* FeaturedItem.swift */; };
 		DDB90B8627F5C1C900BF87D7 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB90B8527F5C1C900BF87D7 /* NavigationBar.swift */; };
@@ -63,14 +63,14 @@
 			containerPortal = DD94911327A2C11F00BE60FC /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = DD94911A27A2C11F00BE60FC;
-			remoteInfo = "SwiftUI for iOS 15";
+			remoteInfo = SuPlayer;
 		};
 		DD94913627A2C12000BE60FC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DD94911327A2C11F00BE60FC /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = DD94911A27A2C11F00BE60FC;
-			remoteInfo = "SwiftUI for iOS 15";
+			remoteInfo = SuPlayer;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -104,16 +104,16 @@
 		DD8BA89828501C8F00395B54 /* CourseSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSection.swift; sourceTree = "<group>"; };
 		DD8BA89A28501CEB00395B54 /* SectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionRow.swift; sourceTree = "<group>"; };
 		DD8BA89C28501FFD00395B54 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
-		DD94911B27A2C11F00BE60FC /* SwiftUI for iOS 15.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI for iOS 15.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD94911E27A2C11F00BE60FC /* SwiftUI_for_iOS_15App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_for_iOS_15App.swift; sourceTree = "<group>"; };
+		DD94911B27A2C11F00BE60FC /* SuPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD94911E27A2C11F00BE60FC /* SuPlayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuPlayerApp.swift; sourceTree = "<group>"; };
 		DD94912027A2C11F00BE60FC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DD94912227A2C12000BE60FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD94912527A2C12000BE60FC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		DD94912B27A2C12000BE60FC /* SwiftUI for iOS 15Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftUI for iOS 15Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD94912F27A2C12000BE60FC /* SwiftUI_for_iOS_15Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_for_iOS_15Tests.swift; sourceTree = "<group>"; };
-		DD94913527A2C12000BE60FC /* SwiftUI for iOS 15UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftUI for iOS 15UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD94913927A2C12000BE60FC /* SwiftUI_for_iOS_15UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_for_iOS_15UITests.swift; sourceTree = "<group>"; };
-		DD94913B27A2C12000BE60FC /* SwiftUI_for_iOS_15UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_for_iOS_15UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DD94912B27A2C12000BE60FC /* SuPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD94912F27A2C12000BE60FC /* SuPlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuPlayerTests.swift; sourceTree = "<group>"; };
+		DD94913527A2C12000BE60FC /* SuPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD94913927A2C12000BE60FC /* SuPlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuPlayerUITests.swift; sourceTree = "<group>"; };
+		DD94913B27A2C12000BE60FC /* SuPlayerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuPlayerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DDB90B7C27F5BADD00BF87D7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DDB90B8327F5BFC900BF87D7 /* FeaturedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedItem.swift; sourceTree = "<group>"; };
 		DDB90B8527F5C1C900BF87D7 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
@@ -229,9 +229,9 @@
 		DD94911227A2C11F00BE60FC = {
 			isa = PBXGroup;
 			children = (
-				DD94911D27A2C11F00BE60FC /* SwiftUI for iOS 15 */,
-				DD94912E27A2C12000BE60FC /* SwiftUI for iOS 15Tests */,
-				DD94913827A2C12000BE60FC /* SwiftUI for iOS 15UITests */,
+				DD94911D27A2C11F00BE60FC /* SuPlayer */,
+				DD94912E27A2C12000BE60FC /* SuPlayerTests */,
+				DD94913827A2C12000BE60FC /* SuPlayerUITests */,
 				DD94911C27A2C11F00BE60FC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -239,17 +239,17 @@
 		DD94911C27A2C11F00BE60FC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DD94911B27A2C11F00BE60FC /* SwiftUI for iOS 15.app */,
-				DD94912B27A2C12000BE60FC /* SwiftUI for iOS 15Tests.xctest */,
-				DD94913527A2C12000BE60FC /* SwiftUI for iOS 15UITests.xctest */,
+				DD94911B27A2C11F00BE60FC /* SuPlayer.app */,
+				DD94912B27A2C12000BE60FC /* SuPlayerTests.xctest */,
+				DD94913527A2C12000BE60FC /* SuPlayerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DD94911D27A2C11F00BE60FC /* SwiftUI for iOS 15 */ = {
+		DD94911D27A2C11F00BE60FC /* SuPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				DD94911E27A2C11F00BE60FC /* SwiftUI_for_iOS_15App.swift */,
+				DD94911E27A2C11F00BE60FC /* SuPlayerApp.swift */,
 				DDB90B7E27F5BD3600BF87D7 /* Navigation */,
 				DDB90B7F27F5BD6100BF87D7 /* Views */,
 				DDB90B8027F5BD8000BF87D7 /* Components */,
@@ -258,7 +258,7 @@
 				DD94912227A2C12000BE60FC /* Assets.xcassets */,
 				DD94912427A2C12000BE60FC /* Preview Content */,
 			);
-			path = "SwiftUI for iOS 15";
+			path = SuPlayer;
 			sourceTree = "<group>";
 		};
 		DD94912427A2C12000BE60FC /* Preview Content */ = {
@@ -269,21 +269,21 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		DD94912E27A2C12000BE60FC /* SwiftUI for iOS 15Tests */ = {
+		DD94912E27A2C12000BE60FC /* SuPlayerTests */ = {
 			isa = PBXGroup;
 			children = (
-				DD94912F27A2C12000BE60FC /* SwiftUI_for_iOS_15Tests.swift */,
+				DD94912F27A2C12000BE60FC /* SuPlayerTests.swift */,
 			);
-			path = "SwiftUI for iOS 15Tests";
+			path = SuPlayerTests;
 			sourceTree = "<group>";
 		};
-		DD94913827A2C12000BE60FC /* SwiftUI for iOS 15UITests */ = {
+		DD94913827A2C12000BE60FC /* SuPlayerUITests */ = {
 			isa = PBXGroup;
 			children = (
-				DD94913927A2C12000BE60FC /* SwiftUI_for_iOS_15UITests.swift */,
-				DD94913B27A2C12000BE60FC /* SwiftUI_for_iOS_15UITestsLaunchTests.swift */,
+				DD94913927A2C12000BE60FC /* SuPlayerUITests.swift */,
+				DD94913B27A2C12000BE60FC /* SuPlayerUITestsLaunchTests.swift */,
 			);
-			path = "SwiftUI for iOS 15UITests";
+			path = SuPlayerUITests;
 			sourceTree = "<group>";
 		};
 		DDB90B7E27F5BD3600BF87D7 /* Navigation */ = {
@@ -349,9 +349,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DD94911A27A2C11F00BE60FC /* SwiftUI for iOS 15 */ = {
+		DD94911A27A2C11F00BE60FC /* SuPlayer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DD94913F27A2C12000BE60FC /* Build configuration list for PBXNativeTarget "SwiftUI for iOS 15" */;
+			buildConfigurationList = DD94913F27A2C12000BE60FC /* Build configuration list for PBXNativeTarget "SuPlayer" */;
 			buildPhases = (
 				DD94911727A2C11F00BE60FC /* Sources */,
 				DD94911827A2C11F00BE60FC /* Frameworks */,
@@ -361,14 +361,14 @@
 			);
 			dependencies = (
 			);
-			name = "SwiftUI for iOS 15";
-			productName = "SwiftUI for iOS 15";
-			productReference = DD94911B27A2C11F00BE60FC /* SwiftUI for iOS 15.app */;
+			name = SuPlayer;
+			productName = SuPlayer;
+			productReference = DD94911B27A2C11F00BE60FC /* SuPlayer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DD94912A27A2C12000BE60FC /* SwiftUI for iOS 15Tests */ = {
+		DD94912A27A2C12000BE60FC /* SuPlayerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DD94914227A2C12000BE60FC /* Build configuration list for PBXNativeTarget "SwiftUI for iOS 15Tests" */;
+			buildConfigurationList = DD94914227A2C12000BE60FC /* Build configuration list for PBXNativeTarget "SuPlayerTests" */;
 			buildPhases = (
 				DD94912727A2C12000BE60FC /* Sources */,
 				DD94912827A2C12000BE60FC /* Frameworks */,
@@ -379,14 +379,14 @@
 			dependencies = (
 				DD94912D27A2C12000BE60FC /* PBXTargetDependency */,
 			);
-			name = "SwiftUI for iOS 15Tests";
-			productName = "SwiftUI for iOS 15Tests";
-			productReference = DD94912B27A2C12000BE60FC /* SwiftUI for iOS 15Tests.xctest */;
+			name = SuPlayerTests;
+			productName = SuPlayerTests;
+			productReference = DD94912B27A2C12000BE60FC /* SuPlayerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		DD94913427A2C12000BE60FC /* SwiftUI for iOS 15UITests */ = {
+		DD94913427A2C12000BE60FC /* SuPlayerUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DD94914527A2C12000BE60FC /* Build configuration list for PBXNativeTarget "SwiftUI for iOS 15UITests" */;
+			buildConfigurationList = DD94914527A2C12000BE60FC /* Build configuration list for PBXNativeTarget "SuPlayerUITests" */;
 			buildPhases = (
 				DD94913127A2C12000BE60FC /* Sources */,
 				DD94913227A2C12000BE60FC /* Frameworks */,
@@ -397,9 +397,9 @@
 			dependencies = (
 				DD94913727A2C12000BE60FC /* PBXTargetDependency */,
 			);
-			name = "SwiftUI for iOS 15UITests";
-			productName = "SwiftUI for iOS 15UITests";
-			productReference = DD94913527A2C12000BE60FC /* SwiftUI for iOS 15UITests.xctest */;
+			name = SuPlayerUITests;
+			productName = SuPlayerUITests;
+			productReference = DD94913527A2C12000BE60FC /* SuPlayerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -425,7 +425,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DD94911627A2C11F00BE60FC /* Build configuration list for PBXProject "SwiftUI for iOS 15" */;
+			buildConfigurationList = DD94911627A2C11F00BE60FC /* Build configuration list for PBXProject "SuPlayer" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -438,9 +438,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DD94911A27A2C11F00BE60FC /* SwiftUI for iOS 15 */,
-				DD94912A27A2C12000BE60FC /* SwiftUI for iOS 15Tests */,
-				DD94913427A2C12000BE60FC /* SwiftUI for iOS 15UITests */,
+				DD94911A27A2C11F00BE60FC /* SuPlayer */,
+				DD94912A27A2C12000BE60FC /* SuPlayerTests */,
+				DD94913427A2C12000BE60FC /* SuPlayerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -503,7 +503,7 @@
 				DD55719B28512A200049A094 /* SmallCourseItem.swift in Sources */,
 				DD94912127A2C11F00BE60FC /* ContentView.swift in Sources */,
 				DDD2752C27F5DE2600FCEABD /* Course.swift in Sources */,
-				DD94911F27A2C11F00BE60FC /* SwiftUI_for_iOS_15App.swift in Sources */,
+				DD94911F27A2C11F00BE60FC /* SuPlayerApp.swift in Sources */,
 				DD89543F27F6303B00157ADD /* CourseItem.swift in Sources */,
 				DD5571AF285130E60049A094 /* LibraryView.swift in Sources */,
 				DDB90B8427F5BFC900BF87D7 /* FeaturedItem.swift in Sources */,
@@ -526,7 +526,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD94913027A2C12000BE60FC /* SwiftUI_for_iOS_15Tests.swift in Sources */,
+				DD94913027A2C12000BE60FC /* SuPlayerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,8 +534,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD94913C27A2C12000BE60FC /* SwiftUI_for_iOS_15UITestsLaunchTests.swift in Sources */,
-				DD94913A27A2C12000BE60FC /* SwiftUI_for_iOS_15UITests.swift in Sources */,
+				DD94913C27A2C12000BE60FC /* SuPlayerUITestsLaunchTests.swift in Sources */,
+				DD94913A27A2C12000BE60FC /* SuPlayerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,12 +544,12 @@
 /* Begin PBXTargetDependency section */
 		DD94912D27A2C12000BE60FC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DD94911A27A2C11F00BE60FC /* SwiftUI for iOS 15 */;
+			target = DD94911A27A2C11F00BE60FC /* SuPlayer */;
 			targetProxy = DD94912C27A2C12000BE60FC /* PBXContainerItemProxy */;
 		};
 		DD94913727A2C12000BE60FC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DD94911A27A2C11F00BE60FC /* SwiftUI for iOS 15 */;
+			target = DD94911A27A2C11F00BE60FC /* SuPlayer */;
 			targetProxy = DD94913627A2C12000BE60FC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -678,7 +678,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SwiftUI for iOS 15/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SuPlayer/Preview Content\"";
 				DEVELOPMENT_TEAM = XF5J63UA25;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -692,7 +692,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "joaocarlosmag.SwiftUI-for-iOS-15";
+				PRODUCT_BUNDLE_IDENTIFIER = com.suplayer.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -707,7 +707,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SwiftUI for iOS 15/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SuPlayer/Preview Content\"";
 				DEVELOPMENT_TEAM = XF5J63UA25;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -721,7 +721,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "joaocarlosmag.SwiftUI-for-iOS-15";
+				PRODUCT_BUNDLE_IDENTIFIER = com.suplayer.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -745,12 +745,12 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "joaocarlosmag.SwiftUI-for-iOS-15Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.suplayer.app.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftUI for iOS 15.app/SwiftUI for iOS 15";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SuPlayer.app/SuPlayer";
 			};
 			name = Debug;
 		};
@@ -770,12 +770,12 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "joaocarlosmag.SwiftUI-for-iOS-15Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.suplayer.app.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftUI for iOS 15.app/SwiftUI for iOS 15";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SuPlayer.app/SuPlayer";
 			};
 			name = Release;
 		};
@@ -793,12 +793,12 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "joaocarlosmag.SwiftUI-for-iOS-15UITests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.suplayer.app.uitests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "SwiftUI for iOS 15";
+				TEST_TARGET_NAME = SuPlayer;
 			};
 			name = Debug;
 		};
@@ -816,19 +816,19 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "joaocarlosmag.SwiftUI-for-iOS-15UITests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.suplayer.app.uitests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "SwiftUI for iOS 15";
+				TEST_TARGET_NAME = SuPlayer;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DD94911627A2C11F00BE60FC /* Build configuration list for PBXProject "SwiftUI for iOS 15" */ = {
+		DD94911627A2C11F00BE60FC /* Build configuration list for PBXProject "SuPlayer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DD94913D27A2C12000BE60FC /* Debug */,
@@ -837,7 +837,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DD94913F27A2C12000BE60FC /* Build configuration list for PBXNativeTarget "SwiftUI for iOS 15" */ = {
+		DD94913F27A2C12000BE60FC /* Build configuration list for PBXNativeTarget "SuPlayer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DD94914027A2C12000BE60FC /* Debug */,
@@ -846,7 +846,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DD94914227A2C12000BE60FC /* Build configuration list for PBXNativeTarget "SwiftUI for iOS 15Tests" */ = {
+		DD94914227A2C12000BE60FC /* Build configuration list for PBXNativeTarget "SuPlayerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DD94914327A2C12000BE60FC /* Debug */,
@@ -855,7 +855,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DD94914527A2C12000BE60FC /* Build configuration list for PBXNativeTarget "SwiftUI for iOS 15UITests" */ = {
+		DD94914527A2C12000BE60FC /* Build configuration list for PBXNativeTarget "SuPlayerUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DD94914627A2C12000BE60FC /* Debug */,

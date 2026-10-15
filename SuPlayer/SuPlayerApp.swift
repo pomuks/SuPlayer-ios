@@ -1,4 +1,4 @@
-//
+﻿//
 //  SwiftUI_for_iOS_15App.swift
 //  SwiftUI for iOS 15
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct SwiftUI_for_iOS_15App: App {
+struct SuPlayerApp: App {
     @StateObject var model = Model()
     
     var body: some Scene {

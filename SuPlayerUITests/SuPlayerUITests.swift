@@ -1,4 +1,4 @@
-//
+﻿//
 //  SwiftUI_for_iOS_15UITests.swift
 //  SwiftUI for iOS 15UITests
 //
@@ -7,7 +7,7 @@
 
 import XCTest
 
-class SwiftUI_for_iOS_15UITests: XCTestCase {
+class SuPlayer: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

@@ -1,4 +1,4 @@
-//
+﻿//
 //  SwiftUI_for_iOS_15UITestsLaunchTests.swift
 //  SwiftUI for iOS 15UITests
 //
@@ -7,7 +7,7 @@
 
 import XCTest
 
-class SwiftUI_for_iOS_15UITestsLaunchTests: XCTestCase {
+class SuPlayerUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
