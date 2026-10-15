@@ -1,0 +1,23 @@
+{
+  "project": "SuPlayer",
+  "platform": "ios",
+  "github": {
+    "owner": "pomuks",
+    "repo": "SuPlayer-ios"
+  },
+  "provider": "github",
+  "codemagic": {},
+  "bitrise": {},
+  "ios": {
+    "path": "ios",
+    "extensions": [
+      "com.example.myapp.widget"
+    ]
+  },
+  "flutter": {
+    "watch": {}
+  },
+  "reactNative": {},
+  "kmp": {},
+  "mobai": {}
+}
