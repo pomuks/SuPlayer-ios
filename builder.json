@@ -1,0 +1,20 @@
+{
+  "project": "builder ios build",
+  "platform": "ios",
+  "github": {
+    "owner": "pomuks",
+    "repo": "SuPlayer-ios"
+  },
+  "provider": "github",
+  "codemagic": {},
+  "bitrise": {},
+  "ios": {
+    "bundleId": "joaocarlosmag.SwiftUI-for-iOS-15"
+  },
+  "flutter": {
+    "watch": {}
+  },
+  "reactNative": {},
+  "kmp": {},
+  "mobai": {}
+}
