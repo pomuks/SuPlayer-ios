@@ -112,7 +112,7 @@ final class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
 
 // MARK: - View Model
 final class PlayerViewModel: ObservableObject {
-    @Published var tracks: [Track] = []   // ← пусто, без демо
+    @Published var tracks: [Track] = []
     @Published var currentTrack: Track? = nil
     @Published var showFullPlayer = false
 
@@ -150,21 +150,17 @@ final class PlayerViewModel: ObservableObject {
         play(tracks[(index - 1 + tracks.count) % tracks.count])
     }
 
-    // MARK: Import
+    // MARK: Import (asCopy уже скопировал файл — просто переносим)
     func importFiles(_ urls: [URL]) {
         print("📥 Импорт: \(urls.count) файл(ов)")
 
         for url in urls {
             print("   → \(url.lastPathComponent)")
 
-            // security-scoped доступ — обязателен для files.app
-            let gotAccess = url.startAccessingSecurityScopedResource()
-            defer { if gotAccess { url.stopAccessingSecurityScopedResource() } }
-
             let docs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let dest = docs.appendingPathComponent(url.lastPathComponent)
 
-            // Копируем если файла ещё нет
+            // asCopy: true → файл уже во временной папке, копируем к себе если нет
             if !FileManager.default.fileExists(atPath: dest.path) {
                 do {
                     try FileManager.default.copyItem(at: url, to: dest)
@@ -174,7 +170,7 @@ final class PlayerViewModel: ObservableObject {
                     continue
                 }
             } else {
-                print("   ℹ️ Уже есть: \(dest.lastPathComponent)")
+                print("   ℹ️ Файл уже есть: \(dest.lastPathComponent)")
             }
 
             // Не добавляем дубликаты
@@ -228,11 +224,9 @@ final class PlayerViewModel: ObservableObject {
 
     func delete(_ track: Track) {
         if let index = tracks.firstIndex(where: { $0.id == track.id }) {
-            // Удалить файл
             try? FileManager.default.removeItem(at: track.url)
             tracks.remove(at: index)
 
-            // Если удалили играющий трек — остановить
             if currentTrack?.id == track.id {
                 audio.stop()
                 currentTrack = nil
@@ -286,17 +280,10 @@ struct MainView: View {
         .sheet(isPresented: $viewModel.showFullPlayer) {
             FullPlayerView(viewModel: viewModel, audio: viewModel.audio)
         }
-        .fileImporter(
-            isPresented: $showFilePicker,
-            allowedContentTypes: [.audio, .mp3, .mpeg4Audio, .wav, .aiff],
-            allowsMultipleSelection: false   // ← ОДИНОЧНЫЙ ВЫБОР = один тап
-        ) { result in
-            switch result {
-            case .success(let urls):
+        .sheet(isPresented: $showFilePicker) {
+            DocumentPicker(contentTypes: [.audio]) { urls in
                 print("✅ Выбрано: \(urls)")
                 viewModel.importFiles(urls)
-            case .failure(let error):
-                print("❌ Ошибка выбора: \(error)")
             }
         }
     }
