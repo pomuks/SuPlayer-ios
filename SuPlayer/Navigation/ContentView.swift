@@ -7,7 +7,7 @@ struct Track: Identifiable, Equatable {
     let id = UUID()
     let title: String
     let artist: String
-    let url: URL?          // nil → демо-трек (не играет)
+    let url: URL
     let durationText: String
 
     static func == (lhs: Track, rhs: Track) -> Bool {
@@ -15,10 +15,10 @@ struct Track: Identifiable, Equatable {
     }
 }
 
-// MARK: - Audio Player (обёртка над AVAudioPlayer)
+// MARK: - Audio Player
 final class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     @Published var isPlaying = false
-    @Published var progress: Double = 0     // 0...1
+    @Published var progress: Double = 0
     @Published var currentTime: Double = 0
     @Published var duration: Double = 0
 
@@ -37,7 +37,7 @@ final class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
-            print("Audio session error: \(error)")
+            print("❌ Audio session error: \(error)")
         }
     }
 
@@ -49,8 +49,9 @@ final class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
             duration = player?.duration ?? 0
             currentTime = 0
             progress = 0
+            print("✅ Loaded: \(url.lastPathComponent), duration: \(duration)s")
         } catch {
-            print("Load error: \(error)")
+            print("❌ Load error: \(error)")
             player = nil
         }
     }
@@ -111,15 +112,7 @@ final class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
 
 // MARK: - View Model
 final class PlayerViewModel: ObservableObject {
-    @Published var tracks: [Track] = [
-        Track(title: "Untrust Us", artist: "Crystal Castles", url: nil, durationText: "3:06"),
-        Track(title: "Kerosene", artist: "Crystal Castles", url: nil, durationText: "3:00"),
-        Track(title: "Мама, я не зигую", artist: "Монеточка", url: nil, durationText: "2:50"),
-        Track(title: "Дом Периньон", artist: "Пошлая Молли", url: nil, durationText: "2:54"),
-        Track(title: "Call The Doctor", artist: "Pissgoblin", url: nil, durationText: "2:49"),
-        Track(title: "Пожары", artist: "XOLIDAYBOY", url: nil, durationText: "3:18"),
-    ]
-
+    @Published var tracks: [Track] = []   // ← пусто, без демо
     @Published var currentTrack: Track? = nil
     @Published var showFullPlayer = false
 
@@ -129,18 +122,13 @@ final class PlayerViewModel: ObservableObject {
         audio.onFinish = { [weak self] in
             self?.next()
         }
+        loadSavedTracks()
     }
 
     func play(_ track: Track) {
         currentTrack = track
-
-        if let url = track.url {
-            audio.load(url: url)
-            audio.play()
-        } else {
-            audio.stop()   // демо-трек: играть нечего
-        }
-
+        audio.load(url: track.url)
+        audio.play()
         showFullPlayer = true
     }
 
@@ -162,16 +150,37 @@ final class PlayerViewModel: ObservableObject {
         play(tracks[(index - 1 + tracks.count) % tracks.count])
     }
 
+    // MARK: Import
     func importFiles(_ urls: [URL]) {
+        print("📥 Импорт: \(urls.count) файл(ов)")
+
         for url in urls {
+            print("   → \(url.lastPathComponent)")
+
+            // security-scoped доступ — обязателен для files.app
             let gotAccess = url.startAccessingSecurityScopedResource()
             defer { if gotAccess { url.stopAccessingSecurityScopedResource() } }
 
             let docs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let dest = docs.appendingPathComponent(url.lastPathComponent)
 
+            // Копируем если файла ещё нет
             if !FileManager.default.fileExists(atPath: dest.path) {
-                try? FileManager.default.copyItem(at: url, to: dest)
+                do {
+                    try FileManager.default.copyItem(at: url, to: dest)
+                    print("   ✅ Скопировано в: \(dest.path)")
+                } catch {
+                    print("   ❌ Ошибка копирования: \(error)")
+                    continue
+                }
+            } else {
+                print("   ℹ️ Уже есть: \(dest.lastPathComponent)")
+            }
+
+            // Не добавляем дубликаты
+            if tracks.contains(where: { $0.url == dest }) {
+                print("   ℹ️ Уже в списке")
+                continue
             }
 
             let name = url.deletingPathExtension().lastPathComponent
@@ -181,17 +190,55 @@ final class PlayerViewModel: ObservableObject {
                 url: dest,
                 durationText: durationString(for: dest)
             )
-
-            if !tracks.contains(where: { $0.url == dest }) {
-                tracks.append(newTrack)
-            }
+            tracks.append(newTrack)
         }
+
+        saveTracks()
+        print("📚 Всего треков: \(tracks.count)")
+    }
+
+    // MARK: Persistence
+    private func saveTracks() {
+        let paths = tracks.map { $0.url.path }
+        UserDefaults.standard.set(paths, forKey: "savedTrackPaths")
+    }
+
+    private func loadSavedTracks() {
+        guard let paths = UserDefaults.standard.stringArray(forKey: "savedTrackPaths") else { return }
+        for path in paths {
+            let url = URL(fileURLWithPath: path)
+            guard FileManager.default.fileExists(atPath: path) else { continue }
+            let name = url.deletingPathExtension().lastPathComponent
+            let track = Track(
+                title: name,
+                artist: "Импорт",
+                url: url,
+                durationText: durationString(for: url)
+            )
+            tracks.append(track)
+        }
+        print("📚 Загружено треков: \(tracks.count)")
     }
 
     private func durationString(for url: URL) -> String {
         guard let p = try? AVAudioPlayer(contentsOf: url) else { return "—" }
         let total = Int(p.duration)
         return String(format: "%d:%02d", total / 60, total % 60)
+    }
+
+    func delete(_ track: Track) {
+        if let index = tracks.firstIndex(where: { $0.id == track.id }) {
+            // Удалить файл
+            try? FileManager.default.removeItem(at: track.url)
+            tracks.remove(at: index)
+
+            // Если удалили играющий трек — остановить
+            if currentTrack?.id == track.id {
+                audio.stop()
+                currentTrack = nil
+            }
+            saveTracks()
+        }
     }
 }
 
@@ -214,7 +261,13 @@ struct MainView: View {
 
             VStack(spacing: 0) {
                 TopBar(showFilePicker: $showFilePicker, openURL: openURL)
-                TrackList(viewModel: viewModel)
+
+                if viewModel.tracks.isEmpty {
+                    EmptyStateView(showFilePicker: $showFilePicker)
+                } else {
+                    TrackList(viewModel: viewModel)
+                }
+
                 Spacer(minLength: 0)
             }
         }
@@ -235,17 +288,69 @@ struct MainView: View {
         }
         .fileImporter(
             isPresented: $showFilePicker,
-            allowedContentTypes: [UTType.audio],
-            allowsMultipleSelection: true
+            allowedContentTypes: [.audio, .mp3, .mpeg4Audio, .wav, .aiff],
+            allowsMultipleSelection: false   // ← ОДИНОЧНЫЙ ВЫБОР = один тап
         ) { result in
-            if case .success(let urls) = result {
+            switch result {
+            case .success(let urls):
+                print("✅ Выбрано: \(urls)")
                 viewModel.importFiles(urls)
+            case .failure(let error):
+                print("❌ Ошибка выбора: \(error)")
             }
         }
     }
 }
 
-// MARK: - Background (красные размытые круги)
+// MARK: - Empty State
+struct EmptyStateView: View {
+    @Binding var showFilePicker: Bool
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Spacer()
+
+            Image(systemName: "music.note.list")
+                .font(.system(size: 70, weight: .light))
+                .foregroundColor(.white.opacity(0.3))
+
+            Text("Пока нет треков")
+                .font(.system(size: 22, weight: .semibold))
+                .foregroundColor(.white)
+
+            Text("Нажми «+» сверху или кнопку ниже,\nчтобы добавить музыку")
+                .font(.system(size: 14))
+                .foregroundColor(.white.opacity(0.5))
+                .multilineTextAlignment(.center)
+
+            Button(action: { showFilePicker = true }) {
+                HStack(spacing: 8) {
+                    Image(systemName: "plus")
+                    Text("Добавить треки")
+                }
+                .font(.system(size: 16, weight: .semibold))
+                .foregroundColor(.white)
+                .padding(.horizontal, 24)
+                .padding(.vertical, 14)
+                .background(
+                    LinearGradient(
+                        colors: [.red, .orange],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                .cornerRadius(14)
+            }
+            .padding(.top, 10)
+
+            Spacer()
+            Spacer()
+        }
+        .padding(.horizontal, 30)
+    }
+}
+
+// MARK: - Background
 struct BackgroundView: View {
     var body: some View {
         ZStack {
@@ -353,16 +458,23 @@ struct TrackList: View {
                         .background(Color.white.opacity(0.05))
                         .cornerRadius(15)
                     }
+                    .contextMenu {
+                        Button(role: .destructive) {
+                            viewModel.delete(track)
+                        } label: {
+                            Label("Удалить", systemImage: "trash")
+                        }
+                    }
                 }
             }
             .padding(.horizontal, 16)
             .padding(.top, 10)
-            .padding(.bottom, 120) // место под мини-плеер
+            .padding(.bottom, 120)
         }
     }
 }
 
-// MARK: - Mini Player (Liquid Glass)
+// MARK: - Mini Player
 struct MiniPlayer: View {
     @ObservedObject var viewModel: PlayerViewModel
     @ObservedObject var audio: AudioPlayer
@@ -370,8 +482,6 @@ struct MiniPlayer: View {
 
     var body: some View {
         HStack(spacing: 15) {
-
-            // Левая часть — тап открывает полный плеер
             HStack(spacing: 15) {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(Color.red.opacity(0.4))
@@ -427,22 +537,19 @@ struct MiniPlayer: View {
     }
 }
 
-// MARK: - Full Player (полноэкранный)
+// MARK: - Full Player
 struct FullPlayerView: View {
     @ObservedObject var viewModel: PlayerViewModel
     @ObservedObject var audio: AudioPlayer
     @Environment(\.dismiss) private var dismiss
 
     private var track: Track? { viewModel.currentTrack }
-    private var isDemo: Bool { track?.url == nil }
 
     var body: some View {
         ZStack {
             BackgroundView()
 
             VStack(spacing: 25) {
-
-                // Кнопка "свернуть"
                 HStack {
                     Button(action: { dismiss() }) {
                         Image(systemName: "chevron.down")
@@ -456,7 +563,6 @@ struct FullPlayerView: View {
 
                 Spacer()
 
-                // Обложка
                 RoundedRectangle(cornerRadius: 30)
                     .fill(
                         LinearGradient(
@@ -473,9 +579,8 @@ struct FullPlayerView: View {
                     )
                     .shadow(color: .red.opacity(0.6), radius: 40)
 
-                // Название и исполнитель
                 VStack(spacing: 8) {
-                    Text(track?.title ?? "Ничего не играет")
+                    Text(track?.title ?? "—")
                         .font(.system(size: 24, weight: .bold))
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
@@ -487,7 +592,6 @@ struct FullPlayerView: View {
                 }
                 .padding(.horizontal, 30)
 
-                // Слайдер прогресса
                 VStack(spacing: 8) {
                     Slider(
                         value: Binding(
@@ -497,7 +601,6 @@ struct FullPlayerView: View {
                         in: 0...1
                     )
                     .accentColor(.white)
-                    .disabled(isDemo)
 
                     HStack {
                         Text(formatTime(audio.currentTime))
@@ -509,16 +612,6 @@ struct FullPlayerView: View {
                 }
                 .padding(.horizontal, 30)
 
-                // Подсказка для демо-трека
-                if isDemo {
-                    Text("Демо-трек. Нажми «+», чтобы импортировать свой mp3.")
-                        .font(.system(size: 12))
-                        .foregroundColor(.white.opacity(0.5))
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal, 40)
-                }
-
-                // Управление
                 HStack(spacing: 45) {
                     Button(action: { viewModel.previous() }) {
                         Image(systemName: "backward.fill")
@@ -542,8 +635,6 @@ struct FullPlayerView: View {
                                 .offset(x: audio.isPlaying ? 0 : 3)
                         }
                     }
-                    .disabled(isDemo)
-                    .opacity(isDemo ? 0.5 : 1)
 
                     Button(action: { viewModel.next() }) {
                         Image(systemName: "forward.fill")
@@ -565,7 +656,7 @@ struct FullPlayerView: View {
     }
 }
 
-// MARK: - Liquid Glass (UIBlurEffect)
+// MARK: - Liquid Glass
 struct VisualEffectBlur: UIViewRepresentable {
     var blurStyle: UIBlurEffect.Style
 
